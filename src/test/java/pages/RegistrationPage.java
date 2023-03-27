@@ -22,6 +22,7 @@ public class RegistrationPage {
             dateOfBirthInput = $(".react-datepicker-wrapper"),
             subjectInput = $("#subjectsInput"),
             hobbiesInput = $("#hobbiesWrapper");
+
     public RegistrationPage openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(Condition.text(TITLE_TEXT));
@@ -74,8 +75,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setHobby(String hobbies) {
-        hobbiesInput.$(byText(hobbies)).click();
+    public RegistrationPage setHobby(String hobby) {
+        hobbiesInput.$(byText(hobby)).click();
         return this;
     }
 
