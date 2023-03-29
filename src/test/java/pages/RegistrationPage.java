@@ -11,17 +11,24 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage {
-    private CalendarComponent calendarComponent = new CalendarComponent();
-    private RegistrationResultModal registrationResultsModal = new RegistrationResultModal();
+    private final CalendarComponent calendarComponent = new CalendarComponent();
+    private final RegistrationResultModal registrationResultsModal = new RegistrationResultModal();
     private final String TITLE_TEXT = "Student Registration Form";
-    private SelenideElement
+    private final SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
+            emailInput = $("#userEmail"),
+            genderInput = $("#genterWrapper"),
+            phoneInput = $("#userNumber"),
             uploadPicture = $("#uploadPicture"),
             currentAddress =$("#currentAddress"),
             dateOfBirthInput = $(".react-datepicker-wrapper"),
             subjectInput = $("#subjectsInput"),
-            hobbiesInput = $("#hobbiesWrapper");
+            hobbiesInput = $("#hobbiesWrapper"),
+            stateInput = $("#react-select-3-input"),
+            cityInput = $("#react-select-4-input"),
+            submitButton = $("#submit");;
+
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
@@ -50,17 +57,17 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setEmail(String email) {
-        $("#userEmail").setValue(email);
+        emailInput.setValue(email);
         return this;
     }
 
     public RegistrationPage setGender(String gender) {
-        $("#genterWrapper").$(byText(gender)).click();
+        genderInput.$(byText(gender)).click();
         return this;
     }
 
     public RegistrationPage setPhone(String value) {
-        $("#userNumber").setValue(value);
+        phoneInput.setValue(value);
         return this;
     }
 
@@ -91,30 +98,17 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setState(String state) {
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText(state)).click();
+        stateInput.setValue(state).pressEnter();
         return this;
     }
 
     public RegistrationPage setCity(String city) {
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText(city)).click();
+        cityInput.setValue(city).pressEnter();
         return this;
     }
 
     public RegistrationPage clickSubmit() {
-        $("#submit").click();
+       submitButton.click();
         return this;
     }
-
-    public RegistrationPage verifyResultsModalAppears() {
-        registrationResultsModal.verifyModalAppears();
-        return this;
-    }
-
-    public RegistrationPage verifyResult(String key, String value) {
-        registrationResultsModal.verifyResult(key, value);
-        return this;
-    }
-
 }

@@ -1,14 +1,21 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import pages.RegistrationPage;
+import pages.components.RegistrationResultModal;
 
 import static utils.FakerData.*;
 
-
 public class PracticeFormTest extends TestBase{
+
+    RegistrationPage registrationPage = new RegistrationPage();
+    RegistrationResultModal registrationResultModal = new RegistrationResultModal();
 
     @Test
     void fillFormTest() {
+        String userName = "Ivan";
+        String userLastName = "Ivanov";
+
         registrationPage.openPage()
                 .removeFooter()
                 .removeBanner()
@@ -26,7 +33,7 @@ public class PracticeFormTest extends TestBase{
                 .setCity(city)
                 .clickSubmit();
 
-        registrationPage.verifyResultsModalAppears()
+        registrationResultModal.verifyModalAppears("Thanks for submitting the form")
                 .verifyResult("Student Name", firstName + " " + lastName)
                 .verifyResult("Student Email", email)
                 .verifyResult("Gender", gender)
