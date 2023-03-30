@@ -13,9 +13,6 @@ public class PracticeFormTest extends TestBase{
 
     @Test
     void fillFormTest() {
-        String userName = "Ivan";
-        String userLastName = "Ivanov";
-
         registrationPage.openPage()
                 .removeFooter()
                 .removeBanner()
