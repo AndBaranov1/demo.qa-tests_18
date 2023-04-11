@@ -12,6 +12,7 @@ public class PracticeFormTest extends TestBase{
     RegistrationPage registrationPage = new RegistrationPage();
     RegistrationResultModal registrationResultModal = new RegistrationResultModal();
 
+    @Tag("simple")
     @Test
     void fillFormTest() {
         registrationPage.openPage()
