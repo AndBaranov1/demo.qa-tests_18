@@ -36,7 +36,7 @@ public class RegistrationPage {
 
 
     public RegistrationPage openPage() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+        //SelenideLogger.addListener("allure", new AllureSelenide());
         step("Open main page", () -> {
             open("/automation-practice-form");
         });
@@ -96,9 +96,8 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setUploadPicture(String value) {
-        File fileToUpload = new File(value);
-        uploadPicture.uploadFile(fileToUpload);
-                //.uploadFromClasspath(value);
+        uploadPicture.uploadFromClasspath(value);
+
         return this;
     }
 
