@@ -13,7 +13,7 @@ compileTestJava {
 
 allure {
     report {
-        version.set("2.21.0")
+        version.set("2.19.0")
     }
     adapter { // отвечает за появление папочки build/allure-results
         aspectjWeaver.set(true) //обработка аннотации @Step
@@ -29,9 +29,9 @@ dependencies {
     testImplementation(
             "com.codeborne:selenide:6.12.2",
             "org.junit.jupiter:junit-jupiter:5.9.1",
-            "org.slf4j:slf4j-simple:2.0.6",
+            "org.slf4j:slf4j-simple:1.7.32",
             "com.github.javafaker:javafaker:1.0.2",
-            "io.qameta.allure:allure-selenide:2.21.0"
+            "io.qameta.allure:allure-selenide:2.19.0"
     )
 }
 
@@ -41,12 +41,6 @@ test {
     task simple_test(type: Test) {
         useJUnitPlatform {
             includeTags("simple")
-        }
-    }
-
-    task remote_test(type: Test) {
-        useJUnitPlatform {
-            includeTags("remote")
         }
     }
 }
