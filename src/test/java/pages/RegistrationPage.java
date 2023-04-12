@@ -2,13 +2,18 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import pages.components.CalendarComponent;
 import pages.components.RegistrationResultModal;
+
+import java.io.File;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.open;
+import static io.qameta.allure.Allure.step;
 
 public class RegistrationPage {
     private final CalendarComponent calendarComponent = new CalendarComponent();
@@ -31,7 +36,10 @@ public class RegistrationPage {
 
 
     public RegistrationPage openPage() {
-        open("/automation-practice-form");
+        SelenideLogger.addListener("allure", new AllureSelenide());
+        step("Open main page", () -> {
+            open("/automation-practice-form");
+        });
         $(".practice-form-wrapper").shouldHave(Condition.text(TITLE_TEXT));
         return this;
     }
@@ -88,7 +96,9 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setUploadPicture(String value) {
-        uploadPicture.uploadFromClasspath(value);
+        File fileToUpload = new File(value);
+        uploadPicture.uploadFile(fileToUpload);
+                //.uploadFromClasspath(value);
         return this;
     }
 

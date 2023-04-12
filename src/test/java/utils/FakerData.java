@@ -18,7 +18,7 @@ public class FakerData {
             year = String.valueOf(faker.number().numberBetween(1990, 2023)),
             subject = faker.options().option("English"),
             hobbies = faker.options().option("Reading"),
-            file = "1.png",
+            file = "src/test/resources/1.png",
             address = faker.address().fullAddress(),
             state = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan"),
             city = city();
