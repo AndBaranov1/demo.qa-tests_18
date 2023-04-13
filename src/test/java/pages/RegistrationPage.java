@@ -36,7 +36,6 @@ public class RegistrationPage {
 
 
     public RegistrationPage openPage() {
-        //SelenideLogger.addListener("allure", new AllureSelenide());
         step("Open main page", () -> {
             open("/automation-practice-form");
         });
