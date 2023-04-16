@@ -31,6 +31,7 @@ allure {
 
 dependencies {
     testImplementation(
+            "org.aspectj:aspectjweaver:1.9.19",
             "com.codeborne:selenide:6.13.0",
             "org.junit.jupiter:junit-jupiter:5.9.2",
             "com.github.javafaker:javafaker:1.0.2",
@@ -47,6 +48,13 @@ test {
 tasks.withType(Test) {
     useJUnitPlatform()
     systemProperties(System.getProperties())
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
 }
 
 task registration_form_test(type: Test) {
@@ -54,3 +62,9 @@ task registration_form_test(type: Test) {
         includeTags("test_page")
     }
 }
+
+    task main_property_test(type: Test) {
+        useJUnitPlatform {
+            includeTags("main_property")
+        }
+    }

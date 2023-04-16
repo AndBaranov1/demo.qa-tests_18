@@ -12,6 +12,7 @@ import pages.RegistrationPage;
 import pages.components.RegistrationResultModal;
 import pages.helpers.Attach;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class TestBase {
@@ -22,17 +23,17 @@ public class TestBase {
 
     @BeforeAll
     static  void beforeAll() {
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browser = "chrome";
-        Configuration.browserVersion = "100.0";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
+        Configuration.browser =  System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browser_version", "100.0");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+        Configuration.remote = System.getProperty("remoteUrl", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
+        capabilities.setCapability("selenoid:options", new HashMap<String, Object>() {{
+            put("enableVNC", true);
+            put("enableVideo", false);
+        }});
 
         Configuration.browserCapabilities = capabilities;
     }
