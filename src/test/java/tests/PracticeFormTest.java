@@ -9,7 +9,7 @@ import static utils.FakerData.*;
 
 public class PracticeFormTest extends TestBase{
 
-    @Tag("test_page")
+    @Tag("main_property")
     @DisplayName("Registration Form Validation")
     @Test
     void fillFormTest() {
