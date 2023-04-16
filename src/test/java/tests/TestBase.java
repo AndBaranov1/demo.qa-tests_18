@@ -13,7 +13,6 @@ import pages.components.RegistrationResultModal;
 import pages.helpers.Attach;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class TestBase {
 
