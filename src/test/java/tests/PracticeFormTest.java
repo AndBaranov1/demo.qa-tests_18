@@ -31,7 +31,7 @@ public class PracticeFormTest extends TestBase{
                     .setBirthDate(day, month, year)
                     .setSubject(subject)
                     .setHobby(hobbies)
-                    //.setUploadPicture(file)
+                    .setUploadPicture(file)
                     .setCurrentAddress(address)
                     .setState(state)
                     .setCity(city);
@@ -50,7 +50,7 @@ public class PracticeFormTest extends TestBase{
                     .verifyResult("Date of Birth", day + " " + month + "," + year)
                     .verifyResult("Subjects", subject)
                     .verifyResult("Hobbies", hobbies)
-                    //.verifyResult("Picture", file)
+                    .verifyResult("Picture", file)
                     .verifyResult("Address", address)
                     .verifyResult("State and City", state + " " + city);
                 });
