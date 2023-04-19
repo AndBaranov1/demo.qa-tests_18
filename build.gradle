@@ -10,6 +10,9 @@ def allureVersion = "2.21.0",
     slf4jVersion = "2.0.7"
 
 
+compileJava {
+    options.encoding = 'UTF-8'
+}
 compileTestJava {
     options.encoding = 'UTF-8'
 }
