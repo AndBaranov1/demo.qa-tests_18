@@ -5,7 +5,7 @@
     "environment": "qa.guru",
     "comment": "any comment here, @And_br",
     "reportLink": "https://jenkins.autotests.cloud",
-    "language": "ru",
+    "language": "en",
     "allureFolder": "allure-report/",
     "enableChart": true
   },
